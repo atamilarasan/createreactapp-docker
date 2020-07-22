@@ -1,0 +1,11 @@
+sudo: required
+services:
+    - docker
+language: generic 
+before_install:
+    - docker-build -t anbalagantamilarasan/createreactapp-docker -f Dockerfile.dev .
+
+    script:
+        - docker run -e CI=true anbalgantamilarasan/createreactapp-docker npm run test -- --coverage
+
+    
